@@ -1,7 +1,6 @@
-﻿//  Codeforces_cpp
+//  Codeforces_cpp
 //
 //  Created by Mert Asil Türeli
-
 #include <iostream>
 #include <stdio.h>
 #include <math.h>
@@ -21,6 +20,7 @@
 #include <assert.h>
 #include <cstdio>
 #include <cmath>
+#include <iterator>
 #include <cstring>
 using namespace std;
 
@@ -39,27 +39,46 @@ int main(int argc, const char * argv[]) {
     #endif     
    
    
-    int k,l,m,n,d;
-    cin  >> k >> l >> m >> n >> d;
-    vector<int> div = {k,l,m,n};
-    vector<int> numbers(d,0);
-    if (k == 1 || l == 1 || m ==1 || n == 1)
+    int result = 0, n;
+    cin >> n;
+    vector<string> words(n);
+    ford(k,n)
     {
-        cout << d;
-        return 0;
+        string ans;
+        cin >> ans;
+        words[k] = ans;
     }
-    ford(x,d)
+    vector<string>::iterator it;
+    string tetra = "Tetrahedron";
+    string cube = "Cube";
+    string octa = "Octahedron";
+    string dode = "Dodecahedron";
+    string ico = "Icosahedron";
+    for(it = words.begin(); it <= words.end(); ++it)
     {
-        ford(y,4)
+        if(*it == tetra)
         {
-            if ((x+1)%div[y] == 0)
-            {
-                numbers[x] = 1;
-            }
+            result += 4;
+        }
+        if(*it == cube)
+        {
+            result += 6;
+        }
+        if(*it == octa)
+        {
+            result += 8;
+        }
+        if(*it == dode)
+        {
+            result += 12;
+        }
+        if(*it == ico)
+        {
+            result += 20;
         }
     }
-
-    cout << count(numbers.begin(), numbers.end(), 1) << endl;
+    
+    cout << result;
     return 0;
    
 }

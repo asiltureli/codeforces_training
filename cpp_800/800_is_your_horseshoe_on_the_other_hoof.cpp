@@ -1,7 +1,6 @@
-﻿//  Codeforces_cpp
+//  Codeforces_cpp
 //
 //  Created by Mert Asil Türeli
-
 #include <iostream>
 #include <stdio.h>
 #include <math.h>
@@ -21,6 +20,7 @@
 #include <assert.h>
 #include <cstdio>
 #include <cmath>
+#include <iterator>
 #include <cstring>
 using namespace std;
 
@@ -39,27 +39,19 @@ int main(int argc, const char * argv[]) {
     #endif     
    
    
-    int k,l,m,n,d;
-    cin  >> k >> l >> m >> n >> d;
-    vector<int> div = {k,l,m,n};
-    vector<int> numbers(d,0);
-    if (k == 1 || l == 1 || m ==1 || n == 1)
+    int result, n = 4;
+    vector<int> col(n);
+    ford(k,n)
     {
-        cout << d;
-        return 0;
+        int ans;
+        cin >> ans;
+        col[k] = ans;
     }
-    ford(x,d)
-    {
-        ford(y,4)
-        {
-            if ((x+1)%div[y] == 0)
-            {
-                numbers[x] = 1;
-            }
-        }
-    }
-
-    cout << count(numbers.begin(), numbers.end(), 1) << endl;
+    sort(col.begin(), col.end());
+    col.erase(unique(col.begin(), col.end()), col.end());
+    int temp = 0;
+    temp = 4- col.size();
+    cout << temp;
     return 0;
    
 }

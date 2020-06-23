@@ -1,7 +1,6 @@
-﻿//  Codeforces_cpp
+//  Codeforces_cpp
 //
 //  Created by Mert Asil Türeli
-
 #include <iostream>
 #include <stdio.h>
 #include <math.h>
@@ -21,6 +20,7 @@
 #include <assert.h>
 #include <cstdio>
 #include <cmath>
+#include <iterator>
 #include <cstring>
 using namespace std;
 
@@ -39,27 +39,40 @@ int main(int argc, const char * argv[]) {
     #endif     
    
    
-    int k,l,m,n,d;
-    cin  >> k >> l >> m >> n >> d;
-    vector<int> div = {k,l,m,n};
-    vector<int> numbers(d,0);
-    if (k == 1 || l == 1 || m ==1 || n == 1)
+    int temp, n, len_x, len_y;
+    cin  >> n;
+    cin >> len_x;
+    vector<int> x(len_x);
+    ford(y,len_x)
     {
-        cout << d;
-        return 0;
+        cin >> temp;
+        x[y] = temp;
     }
-    ford(x,d)
+    cin >> len_y;
+    vector<int> y(len_y);
+    ford(i,len_y)
     {
-        ford(y,4)
-        {
-            if ((x+1)%div[y] == 0)
-            {
-                numbers[x] = 1;
-            }
-        }
+        cin >> temp;
+        y[i] = temp;
     }
-
-    cout << count(numbers.begin(), numbers.end(), 1) << endl;
+    
+    int len_res = len_x + len_y;
+    vector<int> res(0);
+    res.insert(res.begin(), x.begin(), x.end());
+    res.insert(res.begin(), y.begin(), y.end());
+    sort(res.begin(), res.end());
+    vector<int>::iterator it;
+    it = unique(res.begin(), res.end());
+    res.resize(distance(res.begin(), it));
+    if (res.size() == n)
+    {
+        cout << "I become the guy.";
+    }
+    else
+    {
+        cout << "Oh, my keyboard!";
+    }
+    
     return 0;
    
 }

@@ -1,10 +1,6 @@
+﻿//  Codeforces_cpp
 //
-//  800_hulk.cpp
-//  Codeforces_cpp
-//
-//  Created by Mert Asil Türeli on 17.06.20.
-//  Copyright © 2020 Mert Asil Türeli. All rights reserved.
-//
+//  Created by Mert Asil Türeli
 
 #include <cstdio>
 #include <cmath>
@@ -26,7 +22,6 @@ const double EPS = 1e-9;
 const double PI = acos(-1.);
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
     
     unsigned int in_num;
     scanf("%u", &in_num);

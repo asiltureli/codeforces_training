@@ -1,7 +1,6 @@
-﻿//  Codeforces_cpp
+//  Codeforces_cpp
 //
 //  Created by Mert Asil Türeli
-
 #include <iostream>
 #include <stdio.h>
 #include <math.h>
@@ -21,6 +20,7 @@
 #include <assert.h>
 #include <cstdio>
 #include <cmath>
+#include <iterator>
 #include <cstring>
 using namespace std;
 
@@ -39,27 +39,45 @@ int main(int argc, const char * argv[]) {
     #endif     
    
    
-    int k,l,m,n,d;
-    cin  >> k >> l >> m >> n >> d;
-    vector<int> div = {k,l,m,n};
-    vector<int> numbers(d,0);
-    if (k == 1 || l == 1 || m ==1 || n == 1)
+    int result, n;
+    cin  >> n;
+    vector<int> sold(n);
+    ford(k,n)
     {
-        cout << d;
-        return 0;
+        int ans;
+        cin >> ans;
+        sold[k] = ans;
     }
-    ford(x,d)
+    int max_el = *max_element(sold.begin(), sold.end());
+    int min_el = *min_element(sold.begin(), sold.end());
+    int max_idx, min_idx;
+    vector<int>::iterator it;
+    for(it = sold.begin(); it <= sold.end(); ++it)
     {
-        ford(y,4)
+        if (*it == max_el)
         {
-            if ((x+1)%div[y] == 0)
-            {
-                numbers[x] = 1;
-            }
+            max_idx = it - sold.begin();
+            break;
         }
     }
+    for(it = sold.end(); it >= sold.begin(); --it)
+    {
+        if (*it == min_el)
+        {
+            min_idx = sold.end() - it;
+            break; 
+        }
+    }
+    if (min_idx + max_idx > n)
+    {
+        result = min_idx + max_idx - 2;
+    }
+    else
+    {
+        result = min_idx + max_idx - 1;
+    }
 
-    cout << count(numbers.begin(), numbers.end(), 1) << endl;
+    cout << result;
     return 0;
    
 }

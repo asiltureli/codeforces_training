@@ -1,10 +1,7 @@
+﻿//  Codeforces_cpp
 //
-//  800_hulk.cpp
-//  Codeforces_cpp
-//
-//  Created by Mert Asil Türeli on 17.06.20.
-//  Copyright © 2020 Mert Asil Türeli. All rights reserved.
-//
+//  Created by Mert Asil Türeli
+
 #include <iostream>
 #include <stdio.h>
 #include <math.h>
@@ -36,7 +33,6 @@ const double EPS = 1e-9;
 const double PI = acos(-1.);
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
     #ifndef ONLINE_JUDGE 
         freopen("input.txt", "r", stdin); 
         freopen("output.txt", "w", stdout); 
